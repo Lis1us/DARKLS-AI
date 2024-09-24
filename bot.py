@@ -1,4 +1,5 @@
 import logging
+import os
 from mistralai import Mistral
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.constants import ChatAction
@@ -10,12 +11,12 @@ logging.basicConfig(
 )
 
 # Инициализация Mistral AI с явным указанием API ключа
-api_key = "MISTRAL_API_KEY"  # Замените на ваш реальный API ключ
+api_key = os.getenv("MISTRAL_API_KEY")  # Замените на ваш реальный API ключ
 model = "mistral-large-latest"
 client = Mistral(api_key=api_key)
 
 # Токен для работы с Telegram
-TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'  # Замените на токен вашего Telegram-бота
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Замените на токен вашего Telegram-бота
 
 # Хранилище для диалогов и сообщений
 dialogs = {}
